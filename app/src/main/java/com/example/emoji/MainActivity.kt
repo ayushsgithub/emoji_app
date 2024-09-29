@@ -25,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         btSignOut = findViewById(R.id.btSignOut)
 
         btSignOut.setOnClickListener(){
-
             Firebase.auth.signOut()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            val logOutIntent = Intent(this, LoginActivity::class.java)
+            logOutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(logOutIntent)
+            finish()
         }
 
 
