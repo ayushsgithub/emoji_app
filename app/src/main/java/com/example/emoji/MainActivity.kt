@@ -6,13 +6,12 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emoji.model.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btSignOut: Button
@@ -48,19 +47,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun fetchUsers() {
         firestore.collection("users") // Change "users" to your Firestore collection name
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val user = Users(
-                        displayName = document.getString("displayName") ?: "",
-                        emojis = document.getString("emojis") ?: ""
-                    )
-                    userList.add(user)
+            .orderBy("timestamp", Query.Direction.DESCENDING) // Sort by the 'timestamp' field in ascending order. Use DESCENDING for latest first.
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Something went wrong: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
                 }
-                userAdapter.notifyDataSetChanged() // Notify adapter about data change
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(this, "Something went wrong: ${exception.message}", Toast.LENGTH_SHORT).show() // Show a toast message with the error
+
+                if (snapshot != null && !snapshot.isEmpty) {
+                    userList.clear() // Clear the list to prevent duplicate entries
+                    for (document in snapshot.documents) {
+                        val user = Users(
+                            displayName = document.getString("displayName") ?: "",
+                            emojis = document.getString("emojis") ?: ""
+                        )
+                        userList.add(user)
+                    }
+                    userAdapter.notifyDataSetChanged() // Notify adapter about data change
+                }
             }
     }
 }
