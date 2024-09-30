@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchUsers() {
-        firestore.collection("users") // Change "users" to your Firestore collection name
-            .orderBy("timestamp", Query.Direction.DESCENDING) // Sort by the 'timestamp' field in ascending order. Use DESCENDING for latest first.
+        firestore.collection("users")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, exception ->
                 if (exception != null) {
                     Toast.makeText(this, "Something went wrong: ${exception.message}", Toast.LENGTH_SHORT).show()

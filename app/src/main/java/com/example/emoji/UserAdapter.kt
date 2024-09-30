@@ -9,10 +9,7 @@ import com.example.emoji.model.Users
 
 class UserAdapter(private val userList: List<Users>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val userName: TextView = itemView.findViewById(R.id.userName)
-        val userEmojis: TextView = itemView.findViewById(R.id.userEmojis)
-    }
+    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
@@ -21,8 +18,12 @@ class UserAdapter(private val userList: List<Users>) : RecyclerView.Adapter<User
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
-        holder.userName.text = user.displayName ?: "Unknown User" // Handle null case
-        holder.userEmojis.text = user.emojis ?: "No Emojis" // Handle null case
+
+        val userName: TextView = holder.itemView.findViewById(R.id.userName)
+        val userEmojis: TextView = holder.itemView.findViewById(R.id.userEmojis)
+
+        userName.text = user.displayName ?: "Unknown User" // Handle null case
+        userEmojis.text = user.emojis ?: "No Emojis" // Handle null case
     }
 
     override fun getItemCount(): Int {
