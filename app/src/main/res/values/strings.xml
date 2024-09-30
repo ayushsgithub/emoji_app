@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Emoji</string>
     <string name="your_web_client_id">868938059168-02gvqh3b22mmjqn13o5fphlbi1aknj3m.apps.googleusercontent.com</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

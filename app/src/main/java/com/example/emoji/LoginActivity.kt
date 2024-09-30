@@ -103,10 +103,8 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        } else {
-            // User not signed in, show error
-            Toast.makeText(this, "Sign-in failed. Please try again.", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
 
