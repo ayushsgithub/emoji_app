@@ -16,7 +16,7 @@ import com.google.firebase.firestore.Query
 class MainActivity : AppCompatActivity() {
     private lateinit var btSignOut: Button
     private lateinit var rvUser: RecyclerView
-    private lateinit var userAdapter: UserAdapter
+    private lateinit var adapter: UserAdapter
     private lateinit var userList: MutableList<Users>
     private val firestore = FirebaseFirestore.getInstance()
 
@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
         rvUser.layoutManager = LinearLayoutManager(this)
 
         userList = mutableListOf()
-        userAdapter = UserAdapter(userList)
-        rvUser.adapter = userAdapter
+        adapter = UserAdapter(userList)
+        rvUser.adapter = adapter
 
         fetchUsers()
 
         btSignOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut() // Correctly get the FirebaseAuth instance
+            FirebaseAuth.getInstance().signOut()
             val logOutIntent = Intent(this, LoginActivity::class.java)
             logOutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(logOutIntent)
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                         )
                         userList.add(user)
                     }
-                    userAdapter.notifyDataSetChanged() // Notify adapter about data change
+                    adapter.notifyDataSetChanged()
                 }
             }
     }
