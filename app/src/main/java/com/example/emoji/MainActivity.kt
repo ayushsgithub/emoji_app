@@ -4,10 +4,13 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.Spanned
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -27,8 +30,8 @@ import java.util.Locale
 private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var btSignOut: Button
+    private lateinit var tvWelcome: TextView
+    private lateinit var btLogOut: FloatingActionButton
     private lateinit var btEdit: FloatingActionButton
     private lateinit var rvUser: RecyclerView
     private lateinit var adapter: UserAdapter
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = Firebase.auth
-        btSignOut = findViewById(R.id.btSignOut)
+        btLogOut = findViewById(R.id.btLogOut)
         btEdit = findViewById(R.id.btEdit)
         rvUser = findViewById(R.id.recyclerView)
 
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         fetchUsers()
 
-        btSignOut.setOnClickListener {
+        btLogOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val logOutIntent = Intent(this, LoginActivity::class.java)
             logOutIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -68,10 +71,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    inner class EmojiFilter: InputFilter {
+        // Emoji regular expression pattern (covers a wide range of emojis)
+        private val emojiPattern = Regex("[\\p{So}\\p{Cn}]+")
+
+        override fun filter(source: CharSequence?, start: Int, end: Int, dest: Spanned?, dstart: Int, dend: Int): CharSequence {
+            // If source is empty or blank, return empty string
+            if (source == null || source.isBlank()) {
+                return ""
+            }
+
+            // Check if source matches the emoji pattern
+            return if (emojiPattern.matches(source)) {
+                source // Valid emoji input
+            } else {
+                "" // Invalid input, return empty string
+            }
+        }
+    }
 
 
     private fun showAlertDialog() {
         val editText = EditText(this)
+
+        val lengthFilter = InputFilter.LengthFilter(9)
+        val emojiFilter = EmojiFilter()
+
+        editText.filters = arrayOf(lengthFilter, emojiFilter)
 
         val dialog = AlertDialog.Builder(this)
             .setTitle("Update your emojis")
