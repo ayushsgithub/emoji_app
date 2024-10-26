@@ -5,62 +5,30 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="@color/material_dynamic_primary100"
     tools:context=".LoginActivity">
 
-    <!-- Welcome Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:elevation="6dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </androidx.cardview.widget.CardView>
-
-    <!-- Google Sign-In Button with Shadow and Gradient -->
-
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btSignIn"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="108dp"
-        android:elevation="8dp"
-        android:iconPadding="8dp"
-
-        android:shadowColor="@color/black"
-        android:text="Sign in with Google"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="#2196F3"
-        app:cornerRadius="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvWelcome" />
-
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="sans-serif-condensed"
-        android:padding="16dp"
-        android:text="👋 Welcome to Emojicon!"
-        android:textColor="#333333"
-        android:textSize="26sp"
-        android:textStyle="bold"
+        android:backgroundTint="#2196F3"
+        android:text="Sign In with Google"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="224dp"
+        android:text="👋 Welcome to Emojicon!"
+        android:textColorLink="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
