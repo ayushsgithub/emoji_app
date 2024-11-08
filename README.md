@@ -1,8 +1,6 @@
 # Emojicon
 
-
-
-**EmojiStatus** is an open-source Android app that enables users to broadcast their emoji-only status with ease! Using Google One Tap sign-in, users can instantly log in with their Google account and set fun, emoji-based statuses that friends can view. This project integrates several Firebase services, such as Authentication, and Firestore, to provide a seamless, secure, and interactive experience.
+**Emojicon** is an open-source Android app that enables users to broadcast their emoji-only status with ease! Using Google One Tap sign-in, users can instantly log in with their Google account and set fun, emoji-based statuses that friends can view. This project integrates several Firebase services, such as Authentication, and Firestore, to provide a seamless, secure, and interactive experience.
 
 ![screenshot](https://github.com/ayushsgithub/emoji_app/blob/main/app/images/Screenshot%202024-11-08%20153102.png?raw=true)
 
