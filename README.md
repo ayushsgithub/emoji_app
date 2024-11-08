@@ -1,8 +1,10 @@
-# EmojiStatus
+# Emojicon
 
-<img src='https://i.imgur.com/LzCfRxG.png' width='300px' alt='App screenshot' title='App screenshot' />
 
-**EmojiStatus** is an open-source Android app that enables users to broadcast their emoji-only status with ease! Using Google One Tap sign-in, users can instantly log in with their Google account and set fun, emoji-based statuses that friends can view. This project integrates several Firebase services, such as Authentication, Cloud Functions, and Firestore, to provide a seamless, secure, and interactive experience.
+
+**EmojiStatus** is an open-source Android app that enables users to broadcast their emoji-only status with ease! Using Google One Tap sign-in, users can instantly log in with their Google account and set fun, emoji-based statuses that friends can view. This project integrates several Firebase services, such as Authentication, and Firestore, to provide a seamless, secure, and interactive experience.
+
+![screenshot](https://github.com/ayushsgithub/emoji_app/blob/main/app/images/Screenshot%202024-11-08%20153102.png?raw=true)
 
 ## Features
 
@@ -10,7 +12,6 @@
 - **Google One Tap Sign-In**: Quick and easy authentication with Google accounts.
 - **Logout Option**: Secure logout functionality with Firebase.
 - **Firestore Database**: Real-time storage and retrieval of user statuses.
-- **Cloud Functions**: Backend processing with Firebase for additional functionality.
 - **Open-Source**: Fork, modify, and contribute to this project!
 
 ---
@@ -52,14 +53,13 @@ This project uses Firebase services to streamline user experience and handle bac
 - **Set Status**: Users can set their emoji-only status, stored in Firebase Firestore for real-time access.
 - **Logout**: Users can securely log out, with Firebase handling session management.
 
-## Screenshots
+## Video Demo
 
-_Add screenshots of the sign-in flow, emoji status setting, and logout functionality to provide a visual overview._
+**TO_BE_ADDED_SOON** _Add a youtube video of the sign-in flow, emoji status setting, and logout functionality to provide a visual overview._
 
 ## Relevant Links
 
-- **YouTube Tutorials**: Step-by-step guide on building this app on [YouTube](https://www.youtube.com/watch?v=7gF6uUSQXC4&list=PL7NYbSE8uaBB43Ga7Yi-Vzy0ctEzTgxT5)
-- **Cloud Functions Code**: The JavaScript for Firebase Cloud Functions can be found in a separate repository [here](https://github.com/rpandey1234/EmojiStatusCloud).
+- **YouTube Tutorials**: **TO_BE_ADDED_SOON** Step-by-step guide on building this app on YOUTUBE
 - **Firebase Documentation**: [Firebase Docs](https://firebase.google.com/docs)
 
 ## Contributing
